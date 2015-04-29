@@ -1,4 +1,4 @@
-FROM sxend/nginx:1.8.0.1
+FROM sxend/nginx:1.8.0.2
 
 MAINTAINER sxend
 

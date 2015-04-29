@@ -8,5 +8,6 @@ deployment:
     branch: master
     commands:
       - envsubst '${DOCKER_REGISTRY_HOST_NAME} ${ASF_SITE_HOST_NAME}' < usr/local/nginx/conf/nginx.conf.template > usr/local/nginx/conf/nginx.conf.generated
+      - echo ${DOCKER_REGISTRY_AUTH_CREDENTIAL} > docker-registry.htpasswd.generated
       - docker build --tag="docker-registry.arimit.su/sxend/internal-reverse-proxy:${CIRCLE_SHA1}" .
       - docker push docker-registry.arimit.su/sxend/internal-reverse-proxy:${CIRCLE_SHA1}

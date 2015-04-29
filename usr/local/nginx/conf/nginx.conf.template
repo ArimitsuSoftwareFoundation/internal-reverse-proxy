@@ -76,6 +76,8 @@ http {
         client_max_body_size 50M;
         listen       443 ssl;
         server_name  docker-registry.arimit.su;
+        auth_basic            "Restricted";
+        auth_basic_user_file  /usr/local/nginx/docker-registry.htpasswd;
         location / {
             proxy_pass ${DOCKER_REGISTRY_HOST_NAME};
         }

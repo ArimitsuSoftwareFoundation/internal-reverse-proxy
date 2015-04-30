@@ -2,7 +2,7 @@ FROM sxend/nginx:1.8.0.2
 
 MAINTAINER sxend
 
-ADD usr/local/nginx/conf/nginx.conf.generated /usr/local/nginx/conf/nginx.conf
+ADD usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 
 RUN mkdir -p /usr/local/nginx/conf.d
 

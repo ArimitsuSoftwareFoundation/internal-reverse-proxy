@@ -2,7 +2,11 @@ FROM sxend/nginx:1.8.0.2
 
 MAINTAINER sxend
 
-ADD usr/local/nginx/conf/nginx.conf.generated usr/local/nginx/conf/nginx.conf
+ADD usr/local/nginx/conf/nginx.conf.generated /usr/local/nginx/conf/nginx.conf
+
+RUN mkdir -p /usr/local/nginx/conf.d
+
+ADD usr/local/nginx/conf.d/* /usr/local/nginx/
 
 ADD docker-registry.htpasswd.generated usr/local/nginx/docker-registry.htpasswd
 

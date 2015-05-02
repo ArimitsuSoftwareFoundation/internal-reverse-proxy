@@ -8,8 +8,6 @@ RUN mkdir -p /usr/local/nginx/conf.d
 
 ADD usr/local/nginx/conf.d/* /usr/local/nginx/conf.d/
 
-ADD docker-registry.htpasswd usr/local/nginx/docker-registry.htpasswd
-
 RUN update-rc.d nginx enable
 
 CMD service nginx start && /bin/bash

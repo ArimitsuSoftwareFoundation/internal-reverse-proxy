@@ -6,11 +6,9 @@ dependencies:
     - envsubst < .dockercfg.template > ~/.dockercfg
 test:
   override:
-    - ./generate-conf.sh
-    - echo ${DOCKER_REGISTRY_AUTH_CREDENTIAL} > docker-registry.htpasswd
-    - docker build --tag="docker-registry.arimit.su/sxend/internal-reverse-proxy:${CIRCLE_SHA1}" .
+    - docker build --tag="${DOCKER_REGISTRY_DOMAIN}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}" .
 deployment:
   release:
     branch: master
     commands:
-      - docker push docker-registry.arimit.su/sxend/internal-reverse-proxy:${CIRCLE_SHA1}
+      - docker push ${DOCKER_REGISTRY_DOMAIN}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}

@@ -1,0 +1,12 @@
+server {
+    listen       443 ssl;
+    server_name  docker-registry.arimit.su;
+
+    client_max_body_size  1G;
+    auth_basic            "Restricted";
+    auth_basic_user_file  /usr/local/nginx/conf.d/docker-registry.htpasswd;
+
+    location / {
+        proxy_pass http://${DOCKER_REGISTRY_HOST};
+    }
+}

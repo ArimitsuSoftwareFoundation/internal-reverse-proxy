@@ -7,6 +7,6 @@ server {
     auth_basic_user_file  /usr/local/nginx/conf.d/docker-registry.htpasswd;
 
     location / {
-        proxy_pass http://${DOCKER_REGISTRY_HOST};
+        proxy_pass ${DOCKER_REGISTRY_HOST};
     }
 }

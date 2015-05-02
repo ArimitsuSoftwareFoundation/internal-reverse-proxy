@@ -12,5 +12,5 @@ CONTAINER_ID=`docker run -e SETTINGS_FLAVOR=s3 -e AWS_BUCKET=docker-registry.ari
 CONTAINER_IP=`docker inspect --format="{{.NetworkSettings.IPAddress}}" ${CONTAINER_ID}`
 
 docker build --tag="docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`" .
-docker run -it -p 443:443 -e DOCKER_REGISTRY_HOST=${DOCKER_REGISTRY_HOST} -v /etc/certs/nginx:/etc/certs/nginx docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`
+docker run -it -p 443:443 -e DOCKER_REGISTRY_HOST=http://${CONTAINER_IP}:5000 -v /etc/certs/nginx:/etc/certs/nginx docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`
 ```

@@ -6,9 +6,9 @@ dependencies:
     - envsubst < .dockercfg.template > ~/.dockercfg
 test:
   override:
-    - docker build --tag="${DOCKER_REGISTRY_DOMAIN}/asf/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}" .
+    - docker build --tag="${DOCKER_REGISTRY_DOMAIN}/internals/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}" .
 deployment:
   release:
     branch: master
     commands:
-      - docker push ${DOCKER_REGISTRY_DOMAIN}/asf/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+      - docker push ${DOCKER_REGISTRY_DOMAIN}/internals/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}

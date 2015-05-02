@@ -1,5 +1,5 @@
 {
-        "docker-registry.arimit.su": {
+        "${DOCKER_REGISTRY_DOMAIN}": {
                 "auth": "${DOCKER_REGISTRY_AUTH}",
                 "email": "${DOCKER_REGISTRY_EMAIL}"
         }

@@ -10,7 +10,7 @@ ADD usr/local/nginx/conf.d/* /usr/local/nginx/conf.d/
 
 RUN update-rc.d nginx enable
 
-RUN apt-get -y install python-pip gettext
+RUN apt-get -y install python-pip gettext apache2-utils
 
 RUN pip install awscli
 

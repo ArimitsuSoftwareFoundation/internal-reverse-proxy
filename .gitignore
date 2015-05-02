@@ -3,4 +3,5 @@
 *.generated
 target/
 out/
-
+.aws/config
+.aws/credentials

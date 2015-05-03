@@ -14,7 +14,6 @@ DOCKER_REGISTRY_HOST=http://${CONTAINER_IP}:5000
 
 docker build --tag="docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`" .
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /usr/local/virtualhosts:/usr/local/virtualhosts \
   -v /etc/certs/nginx:/etc/certs/nginx \
   -p 443:443 docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`
 ```

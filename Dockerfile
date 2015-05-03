@@ -24,6 +24,8 @@ ADD .aws/config /root/.aws/config
 
 ADD .aws/credentials /root/.aws/credentials
 
+ADD .dockercfg /root/.dockercfg
+
 ADD bin/startup.sh /bin/startup.sh
 
 CMD /bin/startup.sh

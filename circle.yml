@@ -8,6 +8,7 @@ test:
   override:
     - envsubst < .aws/config.template > .aws/config
     - envsubst < .aws/credentials.template > .aws/credentials
+    - envsubst < .dockercfg.template > .dockercfg
     - echo ${DOCKER_REGISTRY_HTPASSWD} > usr/local/nginx/conf.d/docker-registry.htpasswd
     - echo ${JENKINS_HTPASSWD} > usr/local/nginx/conf.d/jenkins.htpasswd
     - docker build --tag="${DOCKER_REGISTRY_DOMAIN}/internals/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}" .

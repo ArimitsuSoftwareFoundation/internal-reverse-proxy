@@ -1,0 +1,8 @@
+server {
+    listen       443 ssl;
+    server_name  ${SERVER_NAME};
+
+    location / {
+        proxy_pass ${BACKEND_HOST};
+    }
+}

@@ -15,5 +15,9 @@ DOCKER_REGISTRY_HOST=http://${CONTAINER_IP}:5000
 docker build --tag="docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`" .
 docker run -it -v /var/run/docker.sock:/var/run/docker.sock \
   -v /etc/certs/nginx:/etc/certs/nginx \
-  -p 181:81 docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`
+  -p 80:80 -p 81:81 docker-registry.arimit.su/internals/internal-reverse-proxy:`git rev-parse HEAD`
+```
+
+```
+nohup nghttpx --http2-proxy -f0.0.0.0,443 -b192.168.0.101,81 /etc/certs/nghttp2/reverse-proxy.key /etc/certs/nghttp2/reverse-proxy.crt 2>&1 > /tmp/nghttp2.log &
 ```

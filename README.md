@@ -22,5 +22,8 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock \
 ```
 docker run -it -p 443:443 -v /etc/certs/nghttp2:/etc/certs/nghttp2 sxend/nghttp2:0.7.13-1.3.2
 
-nohup nghttpx --http2-proxy -f0.0.0.0,443 -b192.168.0.101,81 /etc/certs/nghttp2/reverse-proxy.key /etc/certs/nghttp2/reverse-proxy.crt 2>&1 > /tmp/nghttp2.log &
+nghttpx -D --http2-proxy -f0.0.0.0,443 -b192.168.0.101,81 \
+  --dh-param-file=/etc/certs/nghttp2/reverse-proxy.dhp \
+  /etc/certs/nghttp2/reverse-proxy.key /etc/certs/nghttp2/reverse-proxy.crt
+
 ```
